@@ -3,8 +3,8 @@
 [![Crates.io][crates-badge]][crates-url]
 [![Build Status][ci-badge]][ci-url]
 
-[crates-badge]: https://img.shields.io/crates/v/currensees-rs
-[crates-url]: https://crates.io/crates/currensees-rs
+[crates-badge]: https://img.shields.io/crates/v/currensees
+[crates-url]: https://crates.io/crates/currensees
 [ci-badge]: https://img.shields.io/github/actions/workflow/status/moatsystems/currensees-rs/ci.yml?branch=main
 [ci-url]: https://github.com/moatsystems/currensees-rs/actions
 
