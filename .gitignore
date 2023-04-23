@@ -1,0 +1,4 @@
+.env
+push.sh
+/target
+/Cargo.lock
