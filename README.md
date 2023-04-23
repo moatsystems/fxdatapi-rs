@@ -16,7 +16,7 @@ Add this library as a dependency in your `Cargo.toml`:
 
 ```toml
 [dependencies]
-currensees = "0.1.0"
+currensees = "0.1.1"
 ```
 
 #### Authentication
@@ -27,9 +27,11 @@ use currensees::auth;
 async fn main() {
     let username = "your_username";
     let password = "your_password";
-    
-    match auth::login(username, password).await {
-        Ok(response) => println!("Login successful: {:?}", response),
+
+    let result = auth::login(username, password).await;
+
+    match result {
+        Ok(response) => println!("Received response: {:?}", response),
         Err(error) => println!("Error: {:?}", error),
     }
 }
@@ -49,8 +51,10 @@ async fn main() {
     let target_currency = "EUR";
     let amount = "500";
 
-    match convert::convert(user_type, username, date, base_currency, target_currency, amount).await {
-        Ok(response) => println!("Conversion result: {:?}", response),
+    let result = convert::convert(user_type, username, date, base_currency, target_currency, amount).await;
+
+    match result {
+        Ok(response) => println!("Received response: {:?}", response),
         Err(error) => println!("Error: {:?}", error),
     }
 }
@@ -69,8 +73,71 @@ async fn main() {
     let amount = "500";
     let date = "2023_04_02";
 
-    match convert_all::convert_all(user_type, username, base_currency, amount, date).await {
-        Ok(response) => println!("Conversion result: {:?}", response),
+    let result = convert_all::convert_all(user_type, username, base_currency, amount, date).await;
+
+    match result {
+        Ok(response) => println!("Received response: {:?}", response),
+        Err(error) => println!("Error: {:?}", error),
+    }
+}
+```
+
+#### Daily Average
+
+```rs
+use currensees::daily_average;
+
+async fn main() {
+    let user_type = "member";
+    let username = "your_username";
+    let date = "2023_04_10";
+
+    let result = daily_average::daily_average(user_type, username, date).await;
+
+    match result {
+        Ok(response) => println!("Received response: {:?}", response),
+        Err(error) => println!("Error: {:?}", error),
+    }
+}
+```
+
+#### Weekly Average
+
+```rs
+use currensees::weekly_average;
+
+async fn main() {
+    let user_type = "member";
+    let username = "your_username";
+    let from_date = "2023_04_03";
+    let to_date = "2023_04_07";
+
+    let result = weekly_average::weekly_average(user_type, username, from_date, to_date).await;
+
+    match result {
+        Ok(response) => println!("Received response: {:?}", response),
+        Err(error) => println!("Error: {:?}", error),
+    }
+}
+```
+
+#### Margins and Spreads
+
+```rs
+use currensees::margins_spreads;
+
+async fn example_margins_spreads() {
+    let user_type = "member";
+    let username = "your_username";
+    let day = "19";
+    let month = "04";
+    let year = "2023";
+    let uuid = Some("margins_spreads_uuid");
+
+    let result = margins_spreads::margins_spreads(user_type, username, day, month, year, uuid).await;
+
+    match result {
+        Ok(response) => println!("Received response: {:?}", response),
         Err(error) => println!("Error: {:?}", error),
     }
 }
