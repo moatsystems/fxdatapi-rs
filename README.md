@@ -90,4 +90,4 @@ This project is licensed under the [BSD 3-Clause License](./LICENSE).
 
 ### Copyright
 
-(c) 2023 [Moat Systems Limited](https://moatsystems.com).
+(c) 2020 - 2023 [Moat Systems Limited](https://moatsystems.com).
