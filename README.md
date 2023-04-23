@@ -16,7 +16,7 @@ Add this library as a dependency in your `Cargo.toml`:
 
 ```toml
 [dependencies]
-currensees = "0.1.1"
+currensees = "0.1.2"
 ```
 
 #### Authentication
@@ -24,6 +24,7 @@ currensees = "0.1.1"
 ```rs
 use currensees::auth;
 
+// Currency API Authentication
 async fn main() {
     let username = "your_username";
     let password = "your_password";
@@ -37,12 +38,94 @@ async fn main() {
 }
 ```
 
+#### Currencies
+
+```rs
+use currensees::currencies;
+
+// Get All Currencies
+async fn currencies_get_all() {
+    let user_type = "member";
+    let username = "your_username";
+    let day = "19";
+    let month = "04";
+    let year = "2024";
+    let uuid = None;
+
+    let result = currencies(user_type, username, day, month, year, uuid).await;
+
+    match result {
+        Ok(response) => println!("Received response (Get All): {:?}", response),
+        Err(error) => println!("Error: {:?}", error),
+    }
+}
+
+// Get Currency By ID
+async fn currencies_get_by_id() {
+    let user_type = "member";
+    let username = "your_username";
+    let day = "19";
+    let month = "04";
+    let year = "2023";
+    let uuid = Some("currency_uuid");
+
+    let result = currencies(user_type, username, day, month, year, uuid).await;
+
+    match result {
+        Ok(response) => println!("Received response (Get By ID): {:?}", response),
+        Err(error) => println!("Error: {:?}", error),
+    }
+}
+```
+
+#### Historical
+
+```rs
+use currensees::historical;
+
+// Get All Historical Data
+async fn historical_get_all() {
+    let user_type = "member";
+    let username = "your_username";
+    let date = "2023_04_02";
+    let day = "19";
+    let month = "04";
+    let year = "2023";
+    let uuid = None;
+
+    let result = historical(user_type, username, date, day, month, year, uuid).await;
+
+    match result {
+        Ok(response) => println!("Received response (Get All): {:?}", response),
+        Err(error) => println!("Error: {:?}", error),
+    }
+}
+
+// Get Historical Data By ID
+async fn historical_get_by_id() {
+    let user_type = "member";
+    let username = "your_username";
+    let date = "2023_04_02";
+    let day = "02";
+    let month = "04";
+    let year = "2023";
+    let uuid = Some("historical_uuid");
+
+    let result = historical(user_type, username, date, day, month, year, uuid).await;
+
+    match result {
+        Ok(response) => println!("Received response (Get By ID): {:?}", response),
+        Err(error) => println!("Error: {:?}", error),
+    }
+}
+```
+
 #### Convert
-##### Converting between two currencies
 
 ```rs
 use currensees::convert;
 
+// Converting between two currencies
 async fn main() {
     let user_type = "member";
     let username = "your_username";
@@ -61,11 +144,11 @@ async fn main() {
 ```
 
 #### Convert All
-##### Converting between two currencies
 
 ```rs
 use currensees::convert_all;
 
+// Converting between two currencies
 async fn main() {
     let user_type = "member";
     let username = "your_username";
@@ -87,6 +170,7 @@ async fn main() {
 ```rs
 use currensees::daily_average;
 
+// Retrieve daily average data
 async fn main() {
     let user_type = "member";
     let username = "your_username";
@@ -106,6 +190,7 @@ async fn main() {
 ```rs
 use currensees::weekly_average;
 
+// Retrieve weekly average data
 async fn main() {
     let user_type = "member";
     let username = "your_username";
@@ -126,7 +211,25 @@ async fn main() {
 ```rs
 use currensees::margins_spreads;
 
-async fn example_margins_spreads() {
+// Get All Margins and Spreads
+pub async fn margins_spreads_get_all() {
+    let user_type = "member";
+    let username = "your_username";
+    let day = "19";
+    let month = "04";
+    let year = "2023";
+    let uuid = None;
+
+    let result = margins_spreads(user_type, username, day, month, year, uuid).await;
+
+    match result {
+        Ok(response) => println!("Received response (Get All): {:?}", response),
+        Err(error) => println!("Error: {:?}", error),
+    }
+}
+
+// Get Margins and Spreads By ID
+pub async fn margins_spreads_get_by_id() {
     let user_type = "member";
     let username = "your_username";
     let day = "19";
@@ -134,10 +237,10 @@ async fn example_margins_spreads() {
     let year = "2023";
     let uuid = Some("margins_spreads_uuid");
 
-    let result = margins_spreads::margins_spreads(user_type, username, day, month, year, uuid).await;
+    let result = margins_spreads(user_type, username, day, month, year, uuid).await;
 
     match result {
-        Ok(response) => println!("Received response: {:?}", response),
+        Ok(response) => println!("Received response (Get By ID): {:?}", response),
         Err(error) => println!("Error: {:?}", error),
     }
 }

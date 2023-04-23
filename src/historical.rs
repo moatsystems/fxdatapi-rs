@@ -4,11 +4,14 @@ use std::env;
 use dotenv::dotenv;
 use crate::auth;
 use reqwest::Client;
+#[allow(unused_imports)]
+use serde_json::json;
 use std::error::Error;
 
-pub async fn margins_spreads(
+pub async fn historical(
     user_type: &str,
     username: &str,
+    date: &str,
     day: &str,
     month: &str,
     year: &str,
@@ -19,16 +22,15 @@ pub async fn margins_spreads(
     let cookie_value = format!("{}={}", user_type, username);
 
     let client = Client::new();
-    let base_url = "https://currensees.com/v1/margins_spreads";
+    let base_url = "https://currensees.com/v1/historical";
 
     let url = match uuid {
-        Some(id) => format!("{}/{}?username={}&day={}&month={}&year={}", base_url, id, username, day, month, year),
-        None => format!("{}?username={}&day={}&month={}&year={}", base_url, username, day, month, year),
+        Some(id) => format!("{}/{}?username={}&date={}&day={}&month={}&year={}", base_url, id, username, date, day, month, year),
+        None => format!("{}?username={}&date={}&day={}&month={}&year={}", base_url, username, date, day, month, year),
     };
 
     let response = client
         .get(&url)
-        .header("Content-Type", "application/json")
         .header("Accept", "application/json")
         .header("Cookie", cookie_value)
         .send()
@@ -54,17 +56,18 @@ mod tests {
     use super::*;
 
     #[tokio::test]
-    async fn test_margins_spreads_get_all() {
+    async fn test_historical_get_all() {
         setup();
 
         let user_type = "member";
         let username = std::env::var("USERNAME").expect("USERNAME not set");
+        let date = "2023_04_02";
         let day = "19";
         let month = "04";
         let year = "2023";
         let uuid = None;
 
-        let result = margins_spreads(user_type, &username, day, month, year, uuid).await;
+        let result = historical(user_type, &username, date, day, month, year, uuid).await;
 
         match result {
             Ok(response) => println!("Received response (Get All): {:?}", response),
@@ -73,17 +76,18 @@ mod tests {
     }
 
     #[tokio::test]
-    async fn test_margins_spreads_get_by_id() {
+    async fn test_historical_get_by_id() {
         setup();
 
         let user_type = "member";
         let username = std::env::var("USERNAME").expect("USERNAME not set");
-        let day = "19";
+        let date = "2023_04_02";
+        let day = "02";
         let month = "04";
         let year = "2023";
-        let uuid = Some("00a0aab4-e161-11ed-a06e-acde48001122");
+        let uuid = Some("fe1ee1c4-d162-11ed-a2dc-acde48001122");
 
-        let result = margins_spreads(user_type, &username, day, month, year, uuid).await;
+        let result = historical(user_type, &username, date, day, month, year, uuid).await;
 
         match result {
             Ok(response) => println!("Received response (Get By ID): {:?}", response),

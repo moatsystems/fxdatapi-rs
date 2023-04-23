@@ -4,9 +4,11 @@ use std::env;
 use dotenv::dotenv;
 use crate::auth;
 use reqwest::Client;
+#[allow(unused_imports)]
+use serde_json::json;
 use std::error::Error;
 
-pub async fn margins_spreads(
+pub async fn currencies(
     user_type: &str,
     username: &str,
     day: &str,
@@ -19,7 +21,7 @@ pub async fn margins_spreads(
     let cookie_value = format!("{}={}", user_type, username);
 
     let client = Client::new();
-    let base_url = "https://currensees.com/v1/margins_spreads";
+    let base_url = "https://currensees.com/v1/currencies";
 
     let url = match uuid {
         Some(id) => format!("{}/{}?username={}&day={}&month={}&year={}", base_url, id, username, day, month, year),
@@ -28,7 +30,6 @@ pub async fn margins_spreads(
 
     let response = client
         .get(&url)
-        .header("Content-Type", "application/json")
         .header("Accept", "application/json")
         .header("Cookie", cookie_value)
         .send()
@@ -54,17 +55,17 @@ mod tests {
     use super::*;
 
     #[tokio::test]
-    async fn test_margins_spreads_get_all() {
+    async fn test_currencies_get_all() {
         setup();
 
         let user_type = "member";
         let username = std::env::var("USERNAME").expect("USERNAME not set");
         let day = "19";
         let month = "04";
-        let year = "2023";
+        let year = "2024";
         let uuid = None;
 
-        let result = margins_spreads(user_type, &username, day, month, year, uuid).await;
+        let result = currencies(user_type, &username, day, month, year, uuid).await;
 
         match result {
             Ok(response) => println!("Received response (Get All): {:?}", response),
@@ -73,7 +74,7 @@ mod tests {
     }
 
     #[tokio::test]
-    async fn test_margins_spreads_get_by_id() {
+    async fn test_currencies_get_by_id() {
         setup();
 
         let user_type = "member";
@@ -81,9 +82,9 @@ mod tests {
         let day = "19";
         let month = "04";
         let year = "2023";
-        let uuid = Some("00a0aab4-e161-11ed-a06e-acde48001122");
+        let uuid = Some("594bffc4-d095-11ed-9e30-acde48001122");
 
-        let result = margins_spreads(user_type, &username, day, month, year, uuid).await;
+        let result = currencies(user_type, &username, day, month, year, uuid).await;
 
         match result {
             Ok(response) => println!("Received response (Get By ID): {:?}", response),

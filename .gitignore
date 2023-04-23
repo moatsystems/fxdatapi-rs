@@ -1,4 +1,5 @@
 .env
 push.sh
+Makefile
 /target
 /Cargo.lock
