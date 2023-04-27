@@ -16,7 +16,7 @@ Add this library as a dependency in your `Cargo.toml`:
 
 ```toml
 [dependencies]
-currensees = "0.1.2"
+currensees = "0.1.3"
 ```
 
 #### Authentication
@@ -238,6 +238,74 @@ pub async fn margins_spreads_get_by_id() {
     let uuid = Some("margins_spreads_uuid");
 
     let result = margins_spreads(user_type, username, day, month, year, uuid).await;
+
+    match result {
+        Ok(response) => println!("Received response (Get By ID): {:?}", response),
+        Err(error) => println!("Error: {:?}", error),
+    }
+}
+```
+
+#### Performances
+
+```rs
+use currensees::performances;
+
+// Get All Performances
+pub async fn performances_get_all() {
+    let user_type = "member";
+    let username = "your_username";
+    let uuid = None;
+
+    let result = performances(user_type, username, uuid).await;
+
+    match result {
+        Ok(response) => println!("Received response (Get All): {:?}", response),
+        Err(error) => println!("Error: {:?}", error),
+    }
+}
+
+// Get Performances By ID
+pub async fn performances_get_by_id() {
+    let user_type = "member";
+    let username = "your_username";
+    let uuid = Some("performances_uuid");
+
+    let result = performances(user_type, username, uuid).await;
+
+    match result {
+        Ok(response) => println!("Received response (Get By ID): {:?}", response),
+        Err(error) => println!("Error: {:?}", error),
+    }
+}
+```
+
+#### Signals
+
+```rs
+use currensees::signals;
+
+// Get All Signals
+pub async fn signals_get_all() {
+    let user_type = "member";
+    let username = "your_username";
+    let uuid = None;
+
+    let result = signals(user_type, username, uuid).await;
+
+    match result {
+        Ok(response) => println!("Received response (Get All): {:?}", response),
+        Err(error) => println!("Error: {:?}", error),
+    }
+}
+
+// Get Signals By ID
+pub async fn signals_get_by_id() {
+    let user_type = "member";
+    let username = "your_username";
+    let uuid = Some("signals_uuid");
+
+    let result = signals(user_type, username, uuid).await;
 
     match result {
         Ok(response) => println!("Received response (Get By ID): {:?}", response),

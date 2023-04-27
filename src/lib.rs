@@ -6,3 +6,5 @@ pub mod weekly_average;
 pub mod margins_spreads;
 pub mod currencies;
 pub mod historical;
+pub mod performances;
+pub mod signals;

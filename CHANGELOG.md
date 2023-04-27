@@ -1,3 +1,7 @@
+# 0.1.3 (April 27, 2023)
+
+* Performances.rs and Signals.rs added.
+
 # 0.1.2 (April 23, 2023)
 
 * Currencies.rs and Historical.rs added.

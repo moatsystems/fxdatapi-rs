@@ -1,6 +1,6 @@
 [package]
 name = "currensees"
-version = "0.1.2"
+version = "0.1.3"
 description = "A Rust library to interact with the Currency API."
 authors = ["Finbarrs Oketunji <f@finbarrs.eu>"]
 license-file = "LICENSE"
