@@ -206,6 +206,27 @@ async fn main() {
 }
 ```
 
+#### Monthly Average
+
+```rs
+use currensees::monthly_average;
+
+// Retrieve monthly average data
+async fn main() {
+    let user_type = "member";
+    let username = "your_username";
+    let year = "2023";
+    let month = "04";
+
+    let result = monthly_average::monthly_average(user_type, username, year, month).await;
+
+    match result {
+        Ok(response) => println!("Received response: {:?}", response),
+        Err(error) => println!("Error: {:?}", error),
+    }
+}
+```
+
 #### Margins and Spreads
 
 ```rs
