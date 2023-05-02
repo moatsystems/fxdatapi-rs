@@ -1,3 +1,7 @@
+# 0.1.4 (May 02, 2023)
+
+* Monthly_average.rs added.
+
 # 0.1.3 (April 27, 2023)
 
 * Performances.rs and Signals.rs added.
