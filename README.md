@@ -16,7 +16,7 @@ Add this library as a dependency in your `Cargo.toml`:
 
 ```toml
 [dependencies]
-currensees = "0.1.3"
+currensees = "0.1.4"
 ```
 
 #### Authentication
