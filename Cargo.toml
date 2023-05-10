@@ -1,6 +1,6 @@
 [package]
-name = "currensees"
-version = "0.1.4"
+name = "fxdatapi"
+version = "0.1.5"
 description = "A Rust library to interact with the Currency API."
 authors = ["Finbarrs Oketunji <f@finbarrs.eu>"]
 license-file = "LICENSE"

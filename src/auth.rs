@@ -8,7 +8,7 @@ use std::error::Error;
 
 pub async fn login(username: &str, password: &str) -> Result<String, Box<dyn Error>> {
     let client = Client::new();
-    let url = "https://currensees.com/v1/login";
+    let url = "https://fxdatapi.com/v1/login";
     let payload = json!({
         "username": username,
         "password": password

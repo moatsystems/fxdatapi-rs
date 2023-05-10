@@ -20,7 +20,7 @@ pub async fn convert(
     let cookie_value = format!("{}={}", user_type, username);
 
     let client = Client::new();
-    let url = "https://currensees.com/v1/convert";
+    let url = "https://fxdatapi.com/v1/convert";
     let payload = json!({
         "username": username,
         "date": date,

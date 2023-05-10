@@ -22,7 +22,7 @@ pub async fn historical(
     let cookie_value = format!("{}={}", user_type, username);
 
     let client = Client::new();
-    let base_url = "https://currensees.com/v1/historical";
+    let base_url = "https://fxdatapi.com/v1/historical";
 
     let url = match uuid {
         Some(id) => format!("{}/{}?username={}&date={}&day={}&month={}&year={}", base_url, id, username, date, day, month, year),

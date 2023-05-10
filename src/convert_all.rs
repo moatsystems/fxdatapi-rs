@@ -19,7 +19,7 @@ pub async fn convert_all(
     let cookie_value = format!("{}={}", user_type, username);
 
     let client = Client::new();
-    let url = "https://currensees.com/v1/convert_all";
+    let url = "https://fxdatapi.com/v1/convert_all";
     let payload = json!({
         "username": username,
         "base_currency": base_currency,

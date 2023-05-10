@@ -1,12 +1,12 @@
-## Currensees
+## FXDatapi
 
 [![Crates.io][crates-badge]][crates-url]
 [![Build Status][ci-badge]][ci-url]
 
-[crates-badge]: https://img.shields.io/crates/v/currensees
-[crates-url]: https://crates.io/crates/currensees
-[ci-badge]: https://img.shields.io/github/actions/workflow/status/moatsystems/currensees-rs/ci.yml?branch=main
-[ci-url]: https://github.com/moatsystems/currensees-rs/actions
+[crates-badge]: https://img.shields.io/crates/v/fxdatapi
+[crates-url]: https://crates.io/crates/fxdatapi
+[ci-badge]: https://img.shields.io/github/actions/workflow/status/moatsystems/fxdatapi-rs/ci.yml?branch=main
+[ci-url]: https://github.com/moatsystems/fxdatapi-rs/actions
 
 A [Rust](https://www.rust-lang.org/) library to interact with the [Currency API](https://moatsystems.com/currency-api/).
 
@@ -16,13 +16,13 @@ Add this library as a dependency in your `Cargo.toml`:
 
 ```toml
 [dependencies]
-currensees = "0.1.4"
+fxdatapi = "0.1.4"
 ```
 
 #### Authentication
 
 ```rs
-use currensees::auth;
+use fxdatapi::auth;
 
 // Currency API Authentication
 async fn main() {
@@ -41,7 +41,7 @@ async fn main() {
 #### Currencies
 
 ```rs
-use currensees::currencies;
+use fxdatapi::currencies;
 
 // Get All Currencies
 async fn currencies_get_all() {
@@ -81,7 +81,7 @@ async fn currencies_get_by_id() {
 #### Historical
 
 ```rs
-use currensees::historical;
+use fxdatapi::historical;
 
 // Get All Historical Data
 async fn historical_get_all() {
@@ -123,7 +123,7 @@ async fn historical_get_by_id() {
 #### Convert
 
 ```rs
-use currensees::convert;
+use fxdatapi::convert;
 
 // Converting between two currencies
 async fn main() {
@@ -146,7 +146,7 @@ async fn main() {
 #### Convert All
 
 ```rs
-use currensees::convert_all;
+use fxdatapi::convert_all;
 
 // Converting between two currencies
 async fn main() {
@@ -168,7 +168,7 @@ async fn main() {
 #### Daily Average
 
 ```rs
-use currensees::daily_average;
+use fxdatapi::daily_average;
 
 // Retrieve daily average data
 async fn main() {
@@ -188,7 +188,7 @@ async fn main() {
 #### Weekly Average
 
 ```rs
-use currensees::weekly_average;
+use fxdatapi::weekly_average;
 
 // Retrieve weekly average data
 async fn main() {
@@ -209,7 +209,7 @@ async fn main() {
 #### Monthly Average
 
 ```rs
-use currensees::monthly_average;
+use fxdatapi::monthly_average;
 
 // Retrieve monthly average data
 async fn main() {
@@ -230,7 +230,7 @@ async fn main() {
 #### Margins and Spreads
 
 ```rs
-use currensees::margins_spreads;
+use fxdatapi::margins_spreads;
 
 // Get All Margins and Spreads
 pub async fn margins_spreads_get_all() {
@@ -270,7 +270,7 @@ pub async fn margins_spreads_get_by_id() {
 #### Performances
 
 ```rs
-use currensees::performances;
+use fxdatapi::performances;
 
 // Get All Performances
 pub async fn performances_get_all() {
@@ -304,7 +304,7 @@ pub async fn performances_get_by_id() {
 #### Signals
 
 ```rs
-use currensees::signals;
+use fxdatapi::signals;
 
 // Get All Signals
 pub async fn signals_get_all() {
@@ -341,7 +341,7 @@ Subscribe [here](https://moatsystems.com/currency-api/) for a user account.
 
 ### Using the Currency API
 
-You can read the [API documentation](https://docs.currensees.com/) to understand what's possible with the Currency API. If you need further assistance, don't hesitate to [contact us](https://moatsystems.com/contact/).
+You can read the [API documentation](https://docs.fxdatapi.com/) to understand what's possible with the Currency API. If you need further assistance, don't hesitate to [contact us](https://moatsystems.com/contact/).
 
 ### License
 

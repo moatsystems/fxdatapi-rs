@@ -17,7 +17,7 @@ pub async fn weekly_average(
     let cookie_value = format!("{}={}; {}={}", user_type, username, "username", username);
 
     let client = Client::new();
-    let url = format!("https://currensees.com/v1/weekly_average/{}/{}", from_date, to_date);
+    let url = format!("https://fxdatapi.com/v1/weekly_average/{}/{}", from_date, to_date);
 
     let response = client
         .get(&url)

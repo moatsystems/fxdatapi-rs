@@ -16,7 +16,7 @@ pub async fn signals(
     let cookie_value = format!("{}={}", user_type, username);
 
     let client = Client::new();
-    let base_url = "https://currensees.com/v1/signals";
+    let base_url = "https://fxdatapi.com/v1/signals";
 
     let url = match uuid {
         Some(id) => format!("{}/{}?username={}", base_url, id, username),

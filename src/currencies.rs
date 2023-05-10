@@ -21,7 +21,7 @@ pub async fn currencies(
     let cookie_value = format!("{}={}", user_type, username);
 
     let client = Client::new();
-    let base_url = "https://currensees.com/v1/currencies";
+    let base_url = "https://fxdatapi.com/v1/currencies";
 
     let url = match uuid {
         Some(id) => format!("{}/{}?username={}&day={}&month={}&year={}", base_url, id, username, day, month, year),
